@@ -1,0 +1,43 @@
+GET http://localhost:4000/product/getProducts
+
+###########
+GET http://localhost:4000/product/getProductsByID/1
+
+##########
+GET http://localhost:4000/product/getProductsByName/Product 1
+
+###########
+POST http://localhost:4000/product/createProduct
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Apple iMac (MHK03HN/A) Core i5 7th Gen",
+    "description": "This is an Apple iMac (MHK03HN/A) Core i5 7th Gen",
+    "price": "999",
+    "img": "https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1606072817/Croma%20Assets/Computers%20Peripherals/Desktops/Images/8970007642142.png/mxw_2256,f_auto"
+
+}
+
+###########
+GET http://localhost:4000/user/getUsers
+
+###########
+POST http://localhost:4000/user/signup
+Content-Type: application/json
+
+{
+    "firstName": "Rohan",
+    "lastName": "Kurella",
+    "emailID": "rohankurella02@gmail.com",
+    "password": "babu4321"
+}
+
+###########
+POST http://localhost:4000/user/login
+Content-Type: application/json
+
+{
+    "emailID": "rohankurella02@gmail.com",
+    "password": "babu4321"
+}

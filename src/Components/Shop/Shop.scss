@@ -1,0 +1,23 @@
+.shop {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 50px;
+}
+
+.designContainer {
+    text-align: center;
+    padding: 25px;
+    margin: 25px 35px;
+    height: fit-content;
+    border-radius: 30px;
+    background-color: rgba(45, 44, 44, 0.152);
+    .head {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 33px;
+        color: rgb(223, 217, 217);
+    }
+}
