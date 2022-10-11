@@ -13,6 +13,7 @@ import {
     AwesomeButtonProgress,
     AwesomeButtonSocial,
 } from 'react-awesome-button';
+import { toast } from 'react-hot-toast'
 
 function Login() {
 
@@ -26,13 +27,29 @@ function Login() {
     const onFormSubmit = (data) => {
         console.log(data)
         dispatch(userLogin(data))
+        
+
     }
+
+    const [toastid , setToastid] = React.useState(null)
 
     useEffect(() => {
         if (d.isLoggedIn) {
             navigate('/')
         }
     }, [d.isLoggedIn])
+
+    useEffect(() => {
+        if(d.isLoading === true) {
+            setToastid(toast.loading('Loading...'))
+        }
+        // if(d.isLoading === false) {
+        //     toast.dismiss()
+        // }
+        else {
+            toast.dismiss(toastid)
+        }
+    }, [d.isLoading])
 
     return (
         <div className='container'>

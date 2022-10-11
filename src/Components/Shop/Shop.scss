@@ -1,10 +1,16 @@
 .shop {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    justify-content: center;
+    // display: grid;
+    // grid-template-columns: auto auto auto;
+    // align-items: center;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    justify-content: space-around;
     margin: auto;
     gap: 50px;
+    // height: 50px;
 }
 
 .designContainer {

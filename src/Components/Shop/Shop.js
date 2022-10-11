@@ -9,15 +9,19 @@ import './Shop.scss'
 function Shop() {
 
   let [productsArray, setProductsArray] = useState([])
+  let [tempArray, setTempArray] = useState([])
 
   useEffect(() => {
-    let products = axios.get('http://localhost:4000/product/getProducts')
+    let products = axios.get('/product/getProducts')
     products.then(res => setProductsArray(res.data)).catch(err => console.log(err))
+
+
   }, [])
+  
 
   const carts = useSelector(state => state.cart)
   //console.log(carts.cart)
-  console.log(carts)
+  // console.log(carts)
   let dispatch = useDispatch()
 
   let img = "https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1633696719/Croma%20Assets/Wearable/Wearable%20Devices/Images/244887_1_njixjc.png/mxw_2256,f_auto"

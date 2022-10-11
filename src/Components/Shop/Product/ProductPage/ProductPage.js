@@ -16,7 +16,7 @@ function ProductPage({ match }) {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/product/getProductsByID/${id}`)
+    axios.get(`/product/getProductsByID/${id}`)
       .then(res => { console.log(res.data.payload); setProduct(res.data.payload) })
       .catch(err => console.log(err))
   }, [])
@@ -35,7 +35,7 @@ function ProductPage({ match }) {
             <h4 style={{display: "inline"}}>Price: </h4>$ {product.price}
           </div>
           <div className='description'><h4>Description:</h4>{ product.description }</div>
-          <button onClick={clicked} >Add to Cart </button>
+          <button  onClick={clicked} >Add to Cart </button>
         </div>
       </div>
     </div>

@@ -41,3 +41,30 @@ Content-Type: application/json
     "emailID": "rohankurella02@gmail.com",
     "password": "babu4321"
 }
+
+#######
+GET https://e-pharmacy-react.herokuapp.com/product-api/getproducts
+
+#######
+POST http://localhost:4000/checkout/create-checkout-session
+Content-Type: application/json
+
+{
+    "cartItems": [
+        {
+            "id": "1",
+            "name": "Product 1",
+            "price": "100",
+            "quantity": "1"
+        },
+        {
+            "id": "2",
+            "name": "Product 2",
+            "price": "200",
+            "quantity": "1"
+        }
+    ]
+}
+
+########
+GET http://localhost:4000/checkout/tgdyussuyga

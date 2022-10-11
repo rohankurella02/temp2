@@ -26,6 +26,7 @@ userApp.get('/getUsers', verifyToken , expressAsyncHandler(async (req, res) => {
     res.send({message: "Retrieval of Users Successful", payload: users});
 }) )
 
+
 //Route for user login (POST)
 userApp.post('/login', expressAsyncHandler(async (req, res) => {
     //Get userCollection object
@@ -43,7 +44,11 @@ userApp.post('/login', expressAsyncHandler(async (req, res) => {
             res.send({message: "Incorrect Password"});
         else {
             //Create a token
-            const token = jwt.sign({emailID: user.emailID}, "123456", {expiresIn: 60});
+            const token = jwt.sign({emailID: user.emailID}, "123456", {expiresIn: "2d"});
+            res.cookie("jwt", token, {
+                expires: new Date(Date.now() + 2*24*60*60*1000),
+                
+            })
             res.send({message: "Login Successful", payload: token, userObj: user});
         }
     }

@@ -2,10 +2,12 @@ const exp = require('express');
 const app = exp();
 const mclient = require('mongodb').MongoClient;
 const port = 4000;
+const cookieParser = require('cookie-parser');
 
 var cors = require('cors')
 
 app.use(cors())
+app.use(cookieParser());
 
 //importing dotenv file
 require('dotenv').config();
@@ -15,6 +17,8 @@ const path = require('path');
 
 //connect build of react with nodejs
 app.use(exp.static(path.join(__dirname, 'build')));
+
+
 
 //database connection using mongodb
 const DBurl = "mongodb+srv://rohandb:babu4321@cluster0.mfaor.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -40,16 +44,31 @@ mclient.connect(DBurl).then((client) => {
 //import userApp and productApp
 const userApp = require('./API/UserAPI');
 const productApp = require('./API/ProductAPI.js');
+const checkoutApp = require('./API/checkout.js');
 const {response} = require('express');
+
+app.use((req, res, next) => {
+    console.log(req.cookies)
+    next();
+})
 
 //execute specific middleware based on path
 app.use('/user', userApp);
 app.use('/product', productApp);
+app.use('/checkout', checkoutApp);
+
+//get request for home page
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+})
 
 //dealing with page refresh
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    app.use(exp.static(path.resolve(__dirname, 'build')));
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
+
+
 
 //Handling Invalid URL
 app.use((req, res) => {
