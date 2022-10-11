@@ -13,7 +13,7 @@ function Cart() {
   console.log(d.cartItems)
 
   const handleCheckout = async() => {
-    let res = await axios.post('http://localhost:4000/checkout/create-checkout-session', {cartItems: d.cartItems})
+    let res = await axios.post('/checkout/create-checkout-session', {cartItems: d.cartItems})
     .then((res) => {console.log(res.data); window.location.href = res.data.url})
     .catch(err => console.log(err))
     return false
