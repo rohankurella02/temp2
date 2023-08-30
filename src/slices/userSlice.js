@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 
 //making an API call
 export const userLogin = createAsyncThunk("getUsers", async(user, thunkApi) => {
-    let response = await axios.post("/user/login", user)
+    let response = await axios.post("https://ecommerce-higr.onrender.com/user/login", user)
         // toast.promise(response, {
         //     loading: "Loading...",
         //     success: (res)=> `${res.data.message}`,
